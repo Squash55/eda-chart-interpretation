@@ -17,26 +17,27 @@ st.markdown("Explore mission readiness metrics using synthetic data from 100 sim
 st.subheader("🔍 Summary Statistics")
 st.dataframe(df.describe())
 
-# Readiness histogram
 st.subheader("📈 Readiness Distribution")
-fig, ax = plt.subplots(figsize=(8, 4))  # Resized plot
+fig, ax = plt.subplots(figsize=(6, 3))  # Smaller
 ax.hist(df["Readiness"], bins=20, color="skyblue", edgecolor="black")
 ax.set_xlabel("Readiness Score")
 ax.set_ylabel("Frequency")
 ax.set_title("Distribution of Readiness Scores")
-st.pyplot(fig)
+st.pyplot(fig, use_container_width=False)
+
 
 # Interpretation
 st.markdown("**Interpretation:** Most readiness scores fall between 60 and 90, indicating moderate operational health. Outliers below 60 may indicate urgent issues at specific bases.")
 
 # Maintenance bar chart
 st.subheader("🔧 Maintenance Issues")
-fig2, ax2 = plt.subplots(figsize=(8, 4))  # Resized plot
+fig2, ax2 = plt.subplots(figsize=(6, 3))  # Smaller
 df["Maintenance Issues"].value_counts().sort_index().plot(kind="bar", color="orange", ax=ax2)
 ax2.set_xlabel("Issue Level")
 ax2.set_ylabel("Number of Bases")
 ax2.set_title("Maintenance Issues Across Bases")
-st.pyplot(fig2)
+st.pyplot(fig2, use_container_width=False)
+
 
 # Interpretation
 st.markdown("**Interpretation:** The most frequent maintenance levels are between 2–4. Bases with 6+ issues are at higher risk of readiness degradation and may need immediate attention.")
